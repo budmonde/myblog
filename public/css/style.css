@@ -1,0 +1,176 @@
+/* Font */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,600);
+
+body {
+  font-family: "Open Sans";
+}
+
+/* Colors */
+body {
+}
+
+/* Layout */
+body {
+  margin: 0;
+  overflow-y: scroll;
+}
+img {
+  max-width: 100%;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  color: #41571A;
+}
+a:visited {
+  color: white;
+}
+.container {
+  display: flex;  
+  flex-flow: row nowrap;
+}
+.sidebar {
+  background-color: #556B2F;
+  color: white;
+  flex: 1 0 250px;
+  padding: 50px;
+}
+.title {
+  font-size: 24pt;
+}
+.subtitle {
+  color: #9AB173;
+  font-size: 18pt;
+}
+.menu {
+  padding: 20px 0px;
+}
+.menu-item {
+  padding: 5px 0px;
+}
+.active {
+  font-weight: 600;
+}
+.tags {
+  display: none;
+  line-height: 40px;
+  padding-left: 20px;
+}
+.visible {
+  display:block;
+ }
+.tag {
+  background-color: #556B2F;
+  border: 1pt solid white;
+  border-radius: 15pt;
+  padding: 3px;
+  transition: background-color 0.5s ease-out, color 0.5s ease-out;
+  text-decoration: none;
+}
+.tag:hover {
+  background-color: white;
+  color: #556B2F;
+}
+.tag:active {
+  background-color: #41571A;
+  color: white;
+  transition: none;
+}
+.footer {
+  color: #9AB173;
+}
+.media {
+  font-size: 16pt;
+}
+.media a:hover {
+  text-decoration: none;
+}
+.rights {
+  font-size: 10pt;
+}
+.content {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 0 1 auto;
+  padding: 5px;
+}
+.col {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  padding: 5px;
+}
+.photo {
+  margin-bottom: 5px;
+  position: relative;
+}
+.photo img {
+  cursor: pointer;
+  transition: filter 0.5s ease-out;
+}
+.photo:hover img {
+  filter: brightness(50%) blur(5px);
+}
+.photo .label {
+  color: white;
+  left: 50%;
+  margin: auto;
+  opacity: 0.0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease-out;
+}
+.photo:hover .label {
+  opacity: 1.0;
+}
+.modal {
+  animation-name: darken;
+  animation-duration: 0.5s;
+  background-color: rgba(0,0,0,0.8);
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.modal-content {
+  animation-name: zoom;
+  animation-duration: 0.5s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-img{
+  animation-name: fade;
+  animation-direction: reverse;
+  animation-duration: 0.5s;
+  max-width: 1200px;
+  max-height: 900px;
+}
+.modal-label {
+  color: white;
+  font-size: 18pt;
+  padding: 20px;
+  text-align: center;
+}
+@keyframes fade {
+  from {opacity: 1.0}
+  to {opacity: 0.0}
+}
+@keyframes darken {
+  from {background-color: rgba(0,0,0,0.0)}
+  to {background-color: rgba(0,0,0,0.8)}
+}
+@keyframes zoom {
+  from {transform:translate(-50%, -50%) scale(0)}
+  to {transform:translate(-50%, -50%) scale(1)}
+}
