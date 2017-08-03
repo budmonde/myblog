@@ -1,5 +1,6 @@
 module.exports = {
-  WEB_PORT: process.env.PORT || 8000,
+  APP_NAME: "Personal Portfolio",
   STATIC_PATH: '/static',
-  APP_NAME: "Personal Portfolio"
+  VIEW_PATH: '/view',
+  WEB_PORT: process.env.PORT || 8000,
 };

@@ -30,7 +30,11 @@ app.get('/', (req, res, next) => {
 app.get('/about', (req, res, next) => {
   res.render('pages/about', {
     APP_NAME: GLOBALS.APP_NAME,
-    STATIC_PATH: GLOBALS.STATIC_PATH,
+    items: [
+      'photo01',
+      'photo02',
+      'photo03',
+    ],
     active: {
       about: true,
     },
@@ -40,7 +44,11 @@ app.get('/about', (req, res, next) => {
 app.get('/blog', (req, res, next) => {
   res.render('pages/blog', {
     APP_NAME: GLOBALS.APP_NAME,
-    STATIC_PATH: GLOBALS.STATIC_PATH,
+    items: [
+      'photo01',
+      'photo02',
+      'photo03',
+    ],
     active: {
       blog: true,
     },
@@ -50,12 +58,17 @@ app.get('/blog', (req, res, next) => {
 app.get('/portfolio', (req, res, next) => {
   res.render('pages/portfolio', {
     APP_NAME: GLOBALS.APP_NAME,
-    STATIC_PATH: GLOBALS.STATIC_PATH,
+    items: [
+      'photo01',
+      'photo02',
+      'photo03',
+    ],
     active: {
       portfolio: true,
     },
   });
 });
+
 
 // 404
 app.use(function(req, res, next) {
