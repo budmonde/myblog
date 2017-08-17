@@ -10,7 +10,11 @@
 <body>
   <div class="container">
     {{> sidebar}}
-    {{> blog}}
+    <div class="content">
+      <div class="col">
+        {{> post item}}
+      </div>
+    </div>
   </div>
   {{> modal}}
   <script src="static/js/script.js"></script>

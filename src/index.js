@@ -2,6 +2,8 @@ var express = require('express');
 var path = require('path');
 var hbs = require('express-handlebars');
 
+var renderMD = require('./markdown');
+
 var GLOBALS = require('./config');
 
 
@@ -27,31 +29,33 @@ app.get('/', (req, res, next) => {
   res.redirect('/blog');
 });
 
-app.get('/about', (req, res, next) => {
-  res.render('pages/about', {
-    APP_NAME: GLOBALS.APP_NAME,
-    items: [
-      'photo01',
-      'photo02',
-      'photo03',
-    ],
-    active: {
-      about: true,
-    },
+app.get('/blog', (req, res, next) => {
+  renderMD(req.query.id).then((data) => {
+    res.render('pages/blog', {
+      APP_NAME: GLOBALS.APP_NAME,
+      active: {
+        blog: true,
+      },
+      item: data,
+    });
+  }).catch((err) => {
+    console.log(err);
+    res.redirect('/404');
   });
 });
 
-app.get('/blog', (req, res, next) => {
-  res.render('pages/blog', {
-    APP_NAME: GLOBALS.APP_NAME,
-    items: [
-      'photo01',
-      'photo02',
-      'photo03',
-    ],
-    active: {
-      blog: true,
-    },
+app.get('/about', (req, res, next) => {
+  renderMD('about').then((data) => {
+    res.render('pages/blog', {
+      APP_NAME: GLOBALS.APP_NAME,
+      active: {
+        about: true,
+      },
+      item: data,
+    });
+  }).catch((err) => {
+    console.log(err);
+    res.redirect('/404');
   });
 });
 
