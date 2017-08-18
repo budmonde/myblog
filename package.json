@@ -9,7 +9,8 @@
   "scripts": {
     "start": "yarn dev:start",
     "build": "node post-config.js",
-    "dev:start": "nodemon --ignore lib --exec node src"
+    "dev:start": "nodemon --ignore lib --exec node src",
+    "heroku-postbuild": "yarn build"
   },
   "dependencies": {
     "compression": "^1.7.0",
