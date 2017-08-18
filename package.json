@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn dev:start",
+    "build": "node post-config.js",
     "dev:start": "nodemon --ignore lib --exec node src"
   },
   "dependencies": {

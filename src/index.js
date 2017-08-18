@@ -2,10 +2,14 @@ var express = require('express');
 var path = require('path');
 var hbs = require('express-handlebars');
 
-var renderMD = require('./markdown');
+var renderMd = require('./render-md');
 
 var GLOBALS = require('./config');
-
+var posts = require('../lib/post-meta.json');
+var about = {
+  id: "about",
+  path: './public/markdown/about.md',
+} 
 
 const app = express();
 
@@ -30,13 +34,36 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/blog', (req, res, next) => {
-  renderMD(req.query.id).then((data) => {
-    res.render('pages/blog', {
+  Promise.all(posts.map((post) => {
+    return renderMd(post);
+  })).then((postsData) => {
+    res.render('pages/posts', {
       APP_NAME: GLOBALS.APP_NAME,
       active: {
         blog: true,
       },
-      item: data,
+      body: postsData,
+      sidebar: posts,
+    });
+  }).catch((err) => {
+    console.log(err);
+    res.send('error');
+  });
+});
+
+app.get('/blog/:id', (req, res, next) => {
+  Promise.all(posts.filter((post) => {
+    return post.id === req.params['id'];
+  })).then((filteredPosts) => {
+    return renderMd(filteredPosts[0]);
+  }).then((postData) => {
+    res.render('pages/post', {
+      APP_NAME: GLOBALS.APP_NAME,
+      active: {
+        blog: true,
+      },
+      body: postData,
+      sidebar: posts,
     });
   }).catch((err) => {
     console.log(err);
@@ -45,13 +72,13 @@ app.get('/blog', (req, res, next) => {
 });
 
 app.get('/about', (req, res, next) => {
-  renderMD('about').then((data) => {
-    res.render('pages/blog', {
+  renderMd(about).then((data) => {
+    res.render('pages/post', {
       APP_NAME: GLOBALS.APP_NAME,
       active: {
         about: true,
       },
-      item: data,
+      body: data,
     });
   }).catch((err) => {
     console.log(err);
