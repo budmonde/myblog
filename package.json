@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn dev:start",
-    "build": "node post-config.js",
+    "build": "node meta.js",
     "dev:start": "nodemon --ignore lib --exec node src"
   },
   "dependencies": {

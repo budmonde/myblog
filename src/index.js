@@ -5,11 +5,9 @@ var hbs = require('express-handlebars');
 var renderMd = require('./render-md');
 
 var GLOBALS = require('./config');
-var posts = require('../lib/post-meta.json');
-var about = {
-  id: "about",
-  path: './public/markdown/about.md',
-} 
+var about = require('../dist/about-meta.json');
+var photos = require('../dist/photos-meta.json');
+var posts = require('../dist/posts-meta.json');
 
 const app = express();
 
@@ -89,15 +87,14 @@ app.get('/about', (req, res, next) => {
 app.get('/portfolio', (req, res, next) => {
   res.render('pages/portfolio', {
     APP_NAME: GLOBALS.APP_NAME,
-    items: [
-      'photo01',
-      'photo02',
-      'photo03',
-    ],
     active: {
       portfolio: true,
     },
   });
+});
+
+app.get('/api/photos', (req, res, next) => {
+  res.send(JSON.stringify(photos));
 });
 
 

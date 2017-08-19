@@ -1,0 +1,4 @@
+https://s3.amazonaws.com/budmondephotodump/photo01.jpg
+https://s3.amazonaws.com/budmondephotodump/photo02.jpg
+https://s3.amazonaws.com/budmondephotodump/photo03.jpg
+https://s3.amazonaws.com/budmondephotodump/photo04.jpg

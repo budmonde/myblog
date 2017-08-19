@@ -10,24 +10,16 @@
 <body>
   <div class="container">
     {{> sidebar}}
-    <div class="content">
+    <div id="spread" class="content">
       <div class="col">
-        {{#each items}}
-        {{> photo}}
-        {{/each}}
       </div>
       <div class="col">
-        {{#each items}}
-        {{> photo}}
-        {{/each}}
       </div>
       <div class="col">
-        {{#each items}}
-        {{> photo}}
-        {{/each}}
       </div>
     </div>
   </div>
   {{> modal}}
   <script src="/static/js/script.js"></script>
+  <script src="/static/js/fetch-portfolio.js"></script>
 </body>

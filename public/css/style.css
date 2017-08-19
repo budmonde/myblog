@@ -115,6 +115,7 @@ blockquote p {
 .photo img {
   cursor: pointer;
   margin: 0;
+  max-height: none;
   transition: filter 0.5s ease-out;
 }
 .photo:hover img {
