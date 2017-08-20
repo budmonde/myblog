@@ -21,20 +21,23 @@ var hideModal = function() {
 var setModal = function(target) {
   // Remove previous img element
   modalImg.parentElement.removeChild(modalImg);
-  // Start buffering
-  modalLoader.style.display = "block";
   // Create new DOM img element
   newImg = document.createElement("img");
   newImg.id = "modal-img";
   newImg.className = "modal-img";
-  newImg.src = 'https://s3.amazonaws.com/budmondephotodump/FullResolution/' + target.alt;
+  // Incremental loading
+  modalLoader.style.display = "block";
+  newImg.style.filter = "brightness(50%)";
+  newImg.src = 'https://s3.amazonaws.com/budmondephotodump/Thumbnails/' + target.alt;
+  modalLabel.parentElement.insertBefore(newImg, modalLabel);
   // Set text for modal
   text = target.parentElement.lastElementChild.innerText;
   modalLabel.innerHTML = text;
-  // Show loaded image
+  // Load High Res Version
+  newImg.src = 'https://s3.amazonaws.com/budmondephotodump/FullResolution/' + target.alt;
   newImg.onload = function() {
+    newImg.style.filter = "brightness(100%)";
     modalLoader.style.display = "none";
-    modalLabel.parentElement.insertBefore(newImg, modalLabel);
     // Update state
     modalImg = newImg;
     modalShown = true;
