@@ -98,7 +98,7 @@ blockquote p {
 }
 .col {
   display: flex;
-  flex: 1 1 auto;
+  flex: 1 1 100%;
   flex-flow: column nowrap;
   padding: 0.2rem;
 }
@@ -235,8 +235,8 @@ blockquote p {
   animation-name: fade;
   animation-direction: reverse;
   animation-duration: 0.5s;
-  max-width: 65rem;
-  max-height: 50rem;
+  max-width: 95vw;
+  max-height: 85vh;;
 }
 .modal-label {
   color: white;
