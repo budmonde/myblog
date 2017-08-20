@@ -6,6 +6,7 @@ var currentImg = undefined;
 var modal = document.getElementById('modal');
 var modalImg = document.getElementById('modal-img');
 var modalLabel = document.getElementById('modal-label');
+var modalLoader = document.getElementById('modal-loader');
 
 // Helper Functions
 var showModal = function() {
@@ -22,17 +23,26 @@ var setModal = function(target) {
   modalImg.parentElement.removeChild(modalImg);
   // Create new DOM img element
   newImg = document.createElement("img");
-  newImg.src = target.src;
-  newImg.className = "modal-img";
   newImg.id = "modal-img";
+  newImg.className = "modal-img";
+  // Incremental loading
+  modalLoader.style.display = "block";
+  newImg.style.filter = "brightness(50%)";
+  newImg.src = 'https://s3.amazonaws.com/budmondephotodump/Thumbnails/' + target.alt;
   modalLabel.parentElement.insertBefore(newImg, modalLabel);
-  modalImg = newImg;
   // Set text for modal
   text = target.parentElement.lastElementChild.innerText;
   modalLabel.innerHTML = text;
-  // Update state
-  modalShown = true;
-  currentImg = target;
+  // Load High Res Version
+  newImg.src = 'https://s3.amazonaws.com/budmondephotodump/FullResolution/' + target.alt;
+  newImg.onload = function() {
+    newImg.style.filter = "brightness(100%)";
+    modalLoader.style.display = "none";
+    // Update state
+    modalImg = newImg;
+    modalShown = true;
+    currentImg = target;
+  }
 }
 var incrPhoto = function(offset) {
   target = currentImg.parentElement;

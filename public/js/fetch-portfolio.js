@@ -25,8 +25,8 @@ function renderPhoto(photoJSON) {
 
   photoImg = document.createElement('img');
   photoImg.className = 'photo-asset';
-  photoImg.setAttribute('alt', photoJSON.id);
-  photoImg.src = photoJSON.url;
+  photoImg.setAttribute('alt', photoJSON.path);
+  photoImg.src = 'https://s3.amazonaws.com/budmondephotodump/' + 'Thumbnails/' + photoJSON.path;
 
   photoLabel = document.createElement('span');
   photoLabel.className = 'label';

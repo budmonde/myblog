@@ -37,16 +37,16 @@ function loadPhotosJSON() {
     });
   }).then((buf) => {
     photos = buf.split('\n');
-    return Promise.all(photos.filter((url) => {
-      return url !== '';
+    return Promise.all(photos.filter((path) => {
+      return path !== '';
     }));
   }).then((photos) => {
-    return Promise.all(photos.map((url) => {
-      if (url === '') return;
-      id = getPhotoId(url);
+    return Promise.all(photos.map((path) => {
+      if (path === '') return;
+      id = getPhotoId(path);
       return {
         id: id,
-        url: url,
+        path: path,
         label: id,
       }
     }));
@@ -60,8 +60,8 @@ function loadPhotosJSON() {
 }
 
 
-function getPhotoId(url) {
-  fname = url.split('/').pop();
+function getPhotoId(path) {
+  fname = path.split('/').pop();
   id = fname.split('.')[0];
   return id;
 }

@@ -244,6 +244,12 @@ blockquote p {
   padding: 1rem;
   text-align: center;
 }
+.modal-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 @keyframes fade {
   from {opacity: 1.0}
   to {opacity: 0.0}
