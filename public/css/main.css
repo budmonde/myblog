@@ -83,11 +83,6 @@ blockquote p {
   margin: 0;
 }
 
-/* Container */
-
-.container {
-}
-
 /* Content */
 
 .content {
@@ -109,8 +104,11 @@ blockquote p {
 /* Portfolio */
 
 .photo {
-  margin-bottom: 0.2rem;
+  margin: 0.2rem 0;
   position: relative;
+}
+.photo:first-child{
+  margin-top: 0;
 }
 .photo img {
   cursor: pointer;
@@ -207,58 +205,4 @@ blockquote p {
 }
 .rights {
   font-size: 0.8rem;
-}
-
-/* Modal */
-
-.modal {
-  animation-name: darken;
-  animation-duration: 0.5s;
-  background-color: rgba(0,0,0,0.8);
-  display: none;
-  height: 100%;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
-.modal-content {
-  animation-name: zoom;
-  animation-duration: 0.5s;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.modal-img{
-  animation-name: fade;
-  animation-direction: reverse;
-  animation-duration: 0.5s;
-  max-width: 95vw;
-  max-height: 85vh;;
-}
-.modal-label {
-  color: white;
-  font-size: 1.5rem;
-  padding: 1rem;
-  text-align: center;
-}
-.modal-loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-@keyframes fade {
-  from {opacity: 1.0}
-  to {opacity: 0.0}
-}
-@keyframes darken {
-  from {background-color: rgba(0,0,0,0.0)}
-  to {background-color: rgba(0,0,0,0.8)}
-}
-@keyframes zoom {
-  from {transform:translate(-50%, -50%) scale(0)}
-  to {transform:translate(-50%, -50%) scale(1)}
 }

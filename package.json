@@ -1,18 +1,16 @@
 {
   "name": "myblog",
   "version": "1.0.0",
-  "description": "Personal Portfolio",
+  "description": "My Blog",
   "main": "index.js",
   "repository": "https://github.com/budmonde/myblog.git",
   "author": "Budmonde Duinkharjav <budmonde@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "yarn dev:start",
-    "build": "node meta.js",
-    "dev:start": "nodemon --ignore lib --exec node src"
+    "start": "nodemon --ignore lib --exec node src",
+    "build": "node compile-metadata.js"
   },
   "dependencies": {
-    "compression": "^1.7.0",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
     "path": "^0.12.7",

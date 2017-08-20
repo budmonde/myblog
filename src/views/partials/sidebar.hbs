@@ -1,18 +1,18 @@
 <div class="sidebar">
   <div class="title">
-    Personal Blog
+    My Blog
   </div>
   <div class="subtitle">
     Monde Duinkharjav
   </div>
   <div class="menu">
     <div class="menu-item {{#if active.blog}} active {{/if}}"><a href="/blog">Blog</a></div>
-    <div class="tags {{#if active.blog}} visible {{/if}}">
+    <div class="tags"> 
       {{#each sidebar}}
         <a class="tag" href="/blog/{{this.id}}">Post {{this.id}}</a>
       {{/each}}
     </div>
-    <div class="menu-item {{#if active.portfolio}} active {{/if}}"><a href="/portfolio">Photo Portfolio</a></div>
+    <div class="menu-item {{#if active.portfolio}} active {{/if}}"><a href="/portfolio">Photos</a></div>
     <div class="tags">
       <a class="tag" href="#">landscape</a>
       <a class="tag" href="#">concepts</a>
